@@ -2,6 +2,7 @@ package com.schweitzering.superheroesapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.schweitzering.superheroesapp.base.BaseFragment
 import com.schweitzering.superheroesapp.presentation.SuperheroesListFragment
 
 class MainActivity : AppCompatActivity() {
@@ -16,5 +17,12 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
                 .add(R.id.fragment_container, SuperheroesListFragment())
                 .commit()
+    }
+
+    override fun onBackPressed() {
+        val fragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
+        if(fragment is BaseFragment) {
+            fragment.onBackPressed()
+        } else super.onBackPressed()
     }
 }

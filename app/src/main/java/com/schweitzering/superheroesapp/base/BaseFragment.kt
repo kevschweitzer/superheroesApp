@@ -7,4 +7,6 @@ import org.koin.core.parameter.parametersOf
 
 abstract class BaseFragment: Fragment() {
     protected val navigationManager: NavigationManager by inject { parametersOf(activity?.supportFragmentManager) }
+
+    open fun onBackPressed() {}
 }

@@ -1,16 +1,17 @@
 package com.schweitzering.superheroesapp.presentation
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
 import com.schweitzering.superheroesapp.R
+import com.schweitzering.superheroesapp.base.BaseFragment
 import com.schweitzering.superheroesapp.databinding.FragmentSuperheroesDetailBinding
 import org.koin.androidx.viewmodel.ext.android.sharedViewModel
 
-class SuperheroesDetailFragment : Fragment() {
+class SuperheroesDetailFragment : BaseFragment() {
 
     private val superheroesViewModel: SuperheroesViewModel by sharedViewModel()
     private var itemBinding: FragmentSuperheroesDetailBinding? = null
@@ -24,6 +25,17 @@ class SuperheroesDetailFragment : Fragment() {
         )
         itemBinding?.superhero = superheroesViewModel.selectedSuperhero
         return itemBinding?.root
+    }
+
+    override fun onBackPressed() {
+        AlertDialog.Builder(context)
+                .setMessage("Estas seguro que queres ir para atras?")
+                .setPositiveButton("Aceptar"){_, _ ->
+                    navigationManager.goBack()
+                }
+                .setNegativeButton("Cancelar") {_,_ ->}
+                .create()
+                .show()
     }
 
     override fun onDestroyView() {

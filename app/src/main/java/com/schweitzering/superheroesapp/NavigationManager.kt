@@ -13,4 +13,8 @@ class NavigationManager(
                 ?.addToBackStack(null)
                 ?.commit()
     }
+
+    fun goBack() {
+        fragmentManager?.popBackStack()
+    }
 }
