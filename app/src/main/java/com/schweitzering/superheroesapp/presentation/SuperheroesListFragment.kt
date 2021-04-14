@@ -48,10 +48,7 @@ class SuperheroesListFragment : BaseFragment(), SuperheroesNavigationListener {
         superheroesViewModel.superheroes.observe(
             viewLifecycleOwner,
             Observer {
-                (list_superheroes.adapter as SuperheroesAdapter).setData(it)
-                it.forEach {
-                    println(it.name)
-                }
+                superheroesAdapter.setData(it)
             }
         )
     }

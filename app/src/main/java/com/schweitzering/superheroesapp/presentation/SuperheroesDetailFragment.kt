@@ -14,6 +14,7 @@ class SuperheroesDetailFragment : Fragment() {
 
     private val superheroesViewModel: SuperheroesViewModel by sharedViewModel()
     private var itemBinding: FragmentSuperheroesDetailBinding? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
